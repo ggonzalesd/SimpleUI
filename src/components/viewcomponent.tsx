@@ -7,7 +7,7 @@ export default function ViewComponent({
 }: BasicComponentProps) {
   return (
     <article id={id} className={className}>
-      <div className='mx-auto max-w-screen-lg'>{children}</div>
+      <div className='mx-auto max-w-screen-lg px-2 sm:px-0'>{children}</div>
     </article>
   );
 }

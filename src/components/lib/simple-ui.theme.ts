@@ -28,13 +28,20 @@ export const SUIGenerator =
 
     if (extend === undefined) {
       // Main Theme
+      let default_style = style.default;
       let main_variant = style.variants[v];
-      if (toggle && style.active && style.active[v]) {
-        main_variant = style.active[v];
+
+      if (toggle) {
+        if (style.defaultActive !== undefined) {
+          default_style = style.defaultActive;
+        }
+        if (style.active && style.active[v]) {
+          main_variant = style.active[v];
+        }
       }
 
       return cn(
-        style.default,
+        default_style,
         main_variant,
         style.sizes && style.sizes[s],
         p && style.phases && style.phases[p],

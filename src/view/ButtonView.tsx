@@ -2,10 +2,13 @@ import ViewComponent from '@/components/viewcomponent';
 
 import { FaCopy } from 'react-icons/fa';
 
+import { useAppStore } from '@/state';
+
+import { buttonStyleGenerator } from '@/components/lib/button.style';
+
 import Text from '@/components/ui/text';
 import Button from '@/components/ui/button';
-import { useAppStore } from '@/state';
-import { buttonStyleGenerator } from '@/components/lib/button.style';
+import Divider from '@/components/ui/divider';
 
 export default function ButtonView() {
   const { disabled } = useAppStore();
@@ -22,6 +25,10 @@ export default function ButtonView() {
           @/components/ui/button
         </Text>
       </Text>
+
+      <Divider variant='text' className='whitespace-nowrap'>
+        basic usage
+      </Divider>
 
       <section className='flex flex-col gap-2'>
         <Text type='h5' variant='super' size='medium'>
@@ -42,6 +49,10 @@ export default function ButtonView() {
           </div>
         </div>
       </section>
+
+      <Divider variant='text' className='whitespace-nowrap'>
+        <i>anchor</i> tag usage
+      </Divider>
 
       <section>
         <Text type='h5' variant='super' size='medium'>

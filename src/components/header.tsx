@@ -7,7 +7,7 @@ export default function Header() {
   const { switchMode, disabled, switchDisabled } = useAppStore();
 
   return (
-    <header className='fixed left-0 top-0 flex h-14 w-full gap-4 bg-zinc-300 p-2 shadow-xl dark:bg-slate-800'>
+    <header className='fixed left-0 top-0 z-50 flex h-14 w-full gap-4 bg-zinc-300 p-2 shadow-xl dark:bg-gradient-to-br dark:from-slate-800 dark:to-slate-900'>
       <Button variant='super' size='small' onClick={switchMode}>
         <MdDarkMode size={32} className='hidden dark:inline-block' />
         <MdLightMode size={32} className='inline-block dark:hidden' />

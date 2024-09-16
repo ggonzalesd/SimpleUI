@@ -29,7 +29,7 @@ export default function App() {
     <div
       className={cn(
         { ['dark']: dark },
-        'min-h-screen bg-zinc-200 pt-14 dark:bg-zinc-900',
+        'min-h-screen bg-gradient-to-br from-zinc-200 to-zinc-300 pt-16 dark:from-blue-950 dark:to-gray-950',
       )}
     >
       <Header />
@@ -47,18 +47,6 @@ export default function App() {
       <Select value='Option 1' data={['Option 1', 'Option 2']} />
 
       <div className='grid grid-cols-5 gap-12 p-8'>
-        {['Button', 'Input Text', 'Switch', 'Text', 'Checkbox'].map((title) => (
-          <Text
-            key={title}
-            type='h2'
-            variant='super'
-            size='large'
-            className='text-4xl'
-          >
-            {title}
-          </Text>
-        ))}
-
         {(['super', 'normal', 'text'] as SUIVariant[]).map((variant) => (
           <React.Fragment key={variant}>
             <Button disabled={disabled} variant={variant} className='gap-1'>
@@ -137,6 +125,7 @@ export default function App() {
           <Button type='submit'>Log in</Button>
         </form>
       </div>
+      <ButtonView />
     </div>
   );
 }

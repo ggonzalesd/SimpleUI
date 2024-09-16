@@ -1,6 +1,7 @@
-type SUIVariant = 'super' | 'normal' | 'text';
-type SUISize = 'small' | 'medium' | 'large';
-type SUIPhase = 'ok' | 'loading' | 'error';
+export type SUIVariant = 'super' | 'normal' | 'text';
+export type SUISize = 'small' | 'medium' | 'large';
+export type SUIPhase = 'ok' | 'loading' | 'error';
+export type SUIDirection = 'horizontal' | 'vertical';
 
 export interface BasicComponentProps {
   id?: string;
@@ -52,6 +53,7 @@ export interface SUIStyle<
     phase?: P;
   };
   default?: string;
+  defaultActive?: string;
   variants: Record<V, string>;
   active?: Partial<Record<V, string>>;
   sizes?: Record<S, string>;

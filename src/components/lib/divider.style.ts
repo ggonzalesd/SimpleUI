@@ -1,5 +1,5 @@
-import { SUIGenerator } from './simple-ui.theme';
 import type { SUIDirection, SUISize, SUIVariant } from './simple-ui';
+import { SUIGenerator } from './simple-ui.theme';
 
 export const dividerStyleGenerator = SUIGenerator<
   SUIVariant,

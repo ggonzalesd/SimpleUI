@@ -1,55 +1,58 @@
-import { dividerStyleGenerator } from '../lib/divider.style';
+import React from 'react';
+
 import type { SimpleUILibComponentProps, SUIDirection } from '../lib/simple-ui';
+import { dividerStyleGenerator } from '../lib/divider.style';
 
 interface Props extends Omit<SimpleUILibComponentProps, 'phase'> {
   direction?: SUIDirection;
 }
 
-export default function SUIDivider({
-  id,
-  className,
-  children,
-  variant,
-  size,
-  direction: phase = 'horizontal',
-}: Props) {
-  return (
-    <div
-      id={id}
-      className={dividerStyleGenerator({
-        variant,
-        className,
-        phase,
-      })}
-    >
+const SUIDivider = React.forwardRef<HTMLDivElement, Props>(
+  (
+    { id, className, children, variant, size, direction: phase = 'horizontal' },
+    ref,
+  ) => {
+    return (
       <div
+        ref={ref}
+        id={id}
         className={dividerStyleGenerator({
-          extend: 'ext_line',
           variant,
+          className,
           phase,
         })}
-      />
-      {children !== undefined && (
-        <>
-          <span
-            className={dividerStyleGenerator({
-              extend: 'ext_children',
-              variant,
-              size,
-              phase,
-            })}
-          >
-            {children}
-          </span>
-          <div
-            className={dividerStyleGenerator({
-              extend: 'ext_line',
-              variant,
-              phase,
-            })}
-          />
-        </>
-      )}
-    </div>
-  );
-}
+      >
+        <div
+          className={dividerStyleGenerator({
+            extend: 'ext_line',
+            variant,
+            phase,
+          })}
+        />
+        {children !== undefined && (
+          <>
+            <span
+              className={dividerStyleGenerator({
+                extend: 'ext_children',
+                variant,
+                size,
+                phase,
+              })}
+            >
+              {children}
+            </span>
+            <div
+              className={dividerStyleGenerator({
+                extend: 'ext_line',
+                variant,
+                phase,
+              })}
+            />
+          </>
+        )}
+      </div>
+    );
+  },
+);
+
+export default SUIDivider;

@@ -1,6 +1,7 @@
+import { MdDarkMode, MdLightMode } from 'react-icons/md';
+
 import Button from './ui/button';
 
-import { MdDarkMode, MdLightMode } from 'react-icons/md';
 import { useAppStore } from '@/state';
 
 export default function Header() {

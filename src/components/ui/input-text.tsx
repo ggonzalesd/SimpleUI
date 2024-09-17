@@ -1,4 +1,5 @@
-import { SimpleUILibComponentProps } from '../lib/simple-ui';
+import React from 'react';
+import type { SimpleUILibComponentProps } from '../lib/simple-ui';
 import { inputTextStyleGenerator } from '../lib/input-text.style';
 
 interface Props extends SimpleUILibComponentProps {
@@ -10,28 +11,36 @@ interface Props extends SimpleUILibComponentProps {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-export default function SUIInputText({
-  id,
-  className,
-  disabled,
-  variant,
-  size,
-  type,
-  name,
-  placeholder,
-  value,
-  onChange,
-}: Props) {
-  return (
-    <input
-      id={id}
-      className={inputTextStyleGenerator({ variant, size, className })}
-      disabled={disabled}
-      type={type}
-      name={name}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-    />
-  );
-}
+const SUIInputText = React.forwardRef<HTMLInputElement, Props>(
+  (
+    {
+      id,
+      className,
+      disabled,
+      variant,
+      size,
+      type,
+      name,
+      placeholder,
+      value,
+      onChange,
+    },
+    ref,
+  ) => {
+    return (
+      <input
+        ref={ref}
+        id={id}
+        className={inputTextStyleGenerator({ variant, size, className })}
+        disabled={disabled}
+        type={type}
+        name={name}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+      />
+    );
+  },
+);
+
+export default SUIInputText;

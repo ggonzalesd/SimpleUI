@@ -1,5 +1,5 @@
 import React from 'react';
-import { SimpleUILibComponentProps } from '../lib/simple-ui';
+import type { SimpleUILibComponentProps } from '../lib/simple-ui';
 import { textStyleGenerator } from '../lib/text.style';
 
 interface Props extends Omit<SimpleUILibComponentProps, 'phase'> {

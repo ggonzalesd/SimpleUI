@@ -57,15 +57,16 @@ export interface SUIStyle<
   variants: Record<V, string>;
   active?: Partial<Record<V, string>>;
   sizes?: Record<S, string>;
-  phases?: Record<P, string>;
+  phases?: Partial<Record<P, string>>;
   extends?: Record<
     E,
     {
       default?: string;
+      defaultActive?: string;
       variants?: Record<V, string>;
       active?: Partial<Record<V, string>>;
-      phases?: Record<P, string>;
       sizes?: Record<S, string>;
+      phases?: Partial<Record<P, string>>;
     }
   >;
 }

@@ -1,4 +1,4 @@
-import { SUISize, SUIVariant } from './simple-ui';
+import type { SUISize, SUIVariant } from './simple-ui';
 import { SUIGenerator } from './simple-ui.theme';
 
 export const checkboxStyleGenerator = SUIGenerator<

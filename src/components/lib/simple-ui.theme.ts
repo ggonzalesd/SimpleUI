@@ -50,13 +50,20 @@ export const SUIGenerator =
       );
     } else if (style.extends && style.extends[extend] !== undefined) {
       const st = style.extends[extend];
+      let ext_default = st.default;
       let ext_variant: string | undefined = st.variants && st.variants[v];
-      if (toggle && st.active && st.active[v]) {
-        ext_variant = st.active[v];
+
+      if (toggle) {
+        if (st.defaultActive !== undefined) {
+          ext_default = st.defaultActive;
+        }
+        if (st.active && st.active[v]) {
+          ext_variant = st.active[v];
+        }
       }
 
       return cn(
-        st.default,
+        ext_default,
         ext_variant,
         st.sizes && st.sizes[s],
         p && st.phases && st.phases[p],

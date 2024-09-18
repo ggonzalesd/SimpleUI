@@ -9,19 +9,14 @@ export const dividerStyleGenerator = SUIGenerator<
 >({
   initial: {
     variant: 'normal',
-    sizes: 'medium',
+    size: 'medium',
   },
   default: 'flex leading-5 rounded-md',
-  variants: {
-    super: '',
-    normal: '',
-    text: '',
-  },
   phases: {
     vertical: 'flex-col justify-center',
     horizontal: 'flex-row items-center',
   },
-  extends: {
+  extensions: {
     ext_line: {
       default: 'flex-grow rounded-full',
       phases: {

@@ -10,22 +10,18 @@ interface Props extends Omit<SimpleUILibComponentProps, 'phase'> {
   setState?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const SUISwitch = React.forwardRef<HTMLButtonElement, Props>(
-  (
-    { id, className, variant, size, disabled, children, state, setState },
-    ref,
-  ) => {
+const Switch = React.forwardRef<HTMLButtonElement, Props>(
+  ({ className, variant, size, children, state, setState, ...props }, ref) => {
     return (
       <button
         ref={ref}
-        id={id}
-        disabled={disabled}
         className={switchStyleGenerator({
-          variant,
           extend: 'ex_container',
+          variant,
           className,
         })}
         onClick={() => setState && setState((value) => !value)}
+        {...props}
       >
         <div
           className={switchStyleGenerator({
@@ -38,9 +34,9 @@ const SUISwitch = React.forwardRef<HTMLButtonElement, Props>(
             className={cn(
               { 'translate-x-full': state },
               switchStyleGenerator({
+                extend: 'ex_circle',
                 variant,
                 toggle: state,
-                extend: 'ex_circle',
               }),
             )}
           ></div>
@@ -48,7 +44,11 @@ const SUISwitch = React.forwardRef<HTMLButtonElement, Props>(
           <div className='aspect-square h-full w-auto' />
         </div>
         <span
-          className={switchStyleGenerator({ size, variant, extend: 'ex_text' })}
+          className={switchStyleGenerator({
+            extend: 'ex_text',
+            size,
+            variant,
+          })}
         >
           {children}
         </span>
@@ -57,4 +57,4 @@ const SUISwitch = React.forwardRef<HTMLButtonElement, Props>(
   },
 );
 
-export default SUISwitch;
+export default Switch;

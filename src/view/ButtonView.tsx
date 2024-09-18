@@ -78,7 +78,7 @@ export default function ButtonView() {
 
       <Divider variant='normal' className='whitespace-nowrap' />
 
-      <section>
+      <section className='flex flex-col gap-2'>
         <Text type='h5' variant='super' size='medium'>
           function <span className='italic'>buttonStyleGenerator</span>
         </Text>

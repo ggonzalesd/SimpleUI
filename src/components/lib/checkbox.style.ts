@@ -7,9 +7,10 @@ export const checkboxStyleGenerator = SUIGenerator<
   'phase_check' | 'phase_radio',
   string
 >({
+  name: 'checkbox',
   initial: {
     variant: 'normal',
-    sizes: 'medium',
+    size: 'medium',
     phase: 'phase_check',
   },
   default:

@@ -7,29 +7,27 @@ export const switchStyleGenerator = SUIGenerator<
   SUIPhase,
   'ex_circle' | 'ex_text' | 'ex_container'
 >({
-  name: 'toggle',
+  name: 'switch',
   initial: {
-    sizes: 'medium',
     variant: 'normal',
+    size: 'medium',
   },
   default:
-    'relative rounded-full flex h-full items-center leading-5 transition-colors disabled:opacity-80 disabled:saturate-50',
+    'relative min-h-max min-w-min rounded-full flex h-full items-center leading-5 transition-colors disabled:opacity-80 disabled:saturate-50',
   variants: {
-    super: 'bg-blue-900',
-    normal: 'bg-slate-700',
-    text: 'bg-blue-500/25',
-  },
-  active: {
-    super: 'bg-gradient-to-br to-blue-800 from-blue-400',
-    normal: 'bg-slate-500',
-    text: 'bg-blue-400/20',
+    super: {
+      off: 'bg-blue-900',
+      on: 'bg-gradient-to-br to-blue-800 from-blue-400',
+    },
+    normal: { off: 'bg-slate-700', on: 'bg-slate-500' },
+    text: { off: 'bg-blue-500/25', on: 'bg-blue-400/20' },
   },
   sizes: {
-    small: 'max-h-3 max-w-6',
-    medium: 'max-h-5 max-w-10',
-    large: 'max-h-6 max-w-12',
+    small: 'h-2 w-4',
+    medium: 'h-3 w-6',
+    large: 'h-5 w-10',
   },
-  extends: {
+  extensions: {
     ex_circle: {
       default:
         'absolute left-0 top-0 aspect-square h-full w-auto rounded-full  transition-transform duration-100',
@@ -37,10 +35,7 @@ export const switchStyleGenerator = SUIGenerator<
         super: 'bg-slate-200',
         normal:
           'border-[3px] border-slate-500 bg-gradient-to-br from-slate-100 to-slate-300',
-        text: 'bg-blue-700 dark:bg-blue-300/20',
-      },
-      active: {
-        text: 'bg-blue-600/50',
+        text: { off: 'bg-blue-700 dark:bg-blue-300/20', on: 'bg-blue-600/50' },
       },
     },
     ex_text: {
@@ -58,10 +53,8 @@ export const switchStyleGenerator = SUIGenerator<
     },
     ex_container: {
       default:
-        'inline-flex items-center gap-1 whitespace-nowrap disabled:pointer-events-none disabled:saturate-50 px-2 rounded-md',
+        'inline-flex items-center gap-1 whitespace-nowrap disabled:pointer-events-none  disabled:saturate-50 px-2 rounded-md',
       variants: {
-        super: '',
-        normal: '',
         text: 'hover:bg-blue-600/10',
       },
     },

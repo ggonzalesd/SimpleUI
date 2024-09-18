@@ -4,7 +4,7 @@ import { SUILibGenerator } from './simple-ui.theme';
 export const textStyleGenerator = SUILibGenerator({
   initial: {
     variant: 'normal',
-    sizes: 'small',
+    size: 'small',
   },
   variants: {
     super: cn(

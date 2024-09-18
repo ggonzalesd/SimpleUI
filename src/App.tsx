@@ -5,6 +5,7 @@ import Header from './components/header';
 
 import ButtonView from './view/ButtonView';
 import InstallView from './view/InstallView';
+import HeroView from './view/HeroView';
 
 export default function App() {
   const { dark } = useAppStore();
@@ -18,6 +19,7 @@ export default function App() {
     >
       <Header />
 
+      <HeroView />
       <InstallView />
       <ButtonView />
     </div>

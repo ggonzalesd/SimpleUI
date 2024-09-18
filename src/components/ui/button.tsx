@@ -9,19 +9,13 @@ interface Props extends Omit<SimpleUILibComponentProps, 'phase'> {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const SUIButton = React.forwardRef<HTMLButtonElement, Props>(
-  (
-    { id, className, disabled, variant, size, type, onClick, children },
-    ref,
-  ) => {
+const Button = React.forwardRef<HTMLButtonElement, Props>(
+  ({ className, variant, size, children, ...props }, ref) => {
     return (
       <button
         ref={ref}
-        id={id}
-        disabled={disabled}
-        type={type}
-        onClick={onClick}
         className={buttonStyleGenerator({ variant, size, className })}
+        {...props}
       >
         {children}
       </button>
@@ -29,4 +23,4 @@ const SUIButton = React.forwardRef<HTMLButtonElement, Props>(
   },
 );
 
-export default SUIButton;
+export default Button;

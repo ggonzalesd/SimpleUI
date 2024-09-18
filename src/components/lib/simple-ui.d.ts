@@ -7,6 +7,7 @@ export interface BasicComponentProps {
   id?: string;
   className?: string;
   children?: React.ReactNode;
+  style?: React.CSSProperties;
 }
 
 export interface SimpleUIComponentProps<
@@ -39,34 +40,30 @@ export interface SUIParameters<
   extend?: E;
 }
 
-// * Style configuration type
+interface SUIBasicStyle {
+  default?: string;
+  off?: string;
+  on?: string;
+}
+
+interface SUIModuleStyle<V extends string, S extends string, P extends string>
+  extends SUIBasicStyle {
+  variants?: Partial<Record<V, string | SUIBasicStyle>>;
+  sizes?: Partial<Record<S, string>>;
+  phases?: Partial<Record<P, string>>;
+}
+
 export interface SUIStyle<
   V extends string,
   S extends string,
   P extends string,
   E extends string,
-> {
+> extends SUIModuleStyle<V, S, P> {
   name?: string;
-  initial: {
-    variant: V;
-    sizes: S;
+  initial?: {
+    variant?: V;
+    size?: S;
     phase?: P;
   };
-  default?: string;
-  defaultActive?: string;
-  variants: Record<V, string>;
-  active?: Partial<Record<V, string>>;
-  sizes?: Record<S, string>;
-  phases?: Partial<Record<P, string>>;
-  extends?: Record<
-    E,
-    {
-      default?: string;
-      defaultActive?: string;
-      variants?: Record<V, string>;
-      active?: Partial<Record<V, string>>;
-      sizes?: Record<S, string>;
-      phases?: Partial<Record<P, string>>;
-    }
-  >;
+  extensions?: Record<E, SUIModuleStyle<V, S, P>>;
 }

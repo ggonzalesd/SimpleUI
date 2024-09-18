@@ -1,9 +1,10 @@
 import { SUILibGenerator } from './simple-ui.theme';
 
 export const buttonStyleGenerator = SUILibGenerator({
+  name: 'button',
   initial: {
     variant: 'normal',
-    sizes: 'medium',
+    size: 'medium',
   },
   default:
     'inline-flex whitespace-nowrap items-center justify-center leading-5 transition-colors disabled:pointer-events-none disabled:opacity-80 disabled:saturate-50 outline-1 outline-offset-4 outline-blue-500',

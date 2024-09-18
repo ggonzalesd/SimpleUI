@@ -1,9 +1,9 @@
 import { SUILibGenerator } from './simple-ui.theme';
 
-export const buttonStyleGenerator = SUILibGenerator({
+export const selectStyleGenerator = SUILibGenerator({
   initial: {
     variant: 'normal',
-    sizes: 'medium',
+    size: 'medium',
   },
   default:
     'inline-flex whitespace-nowrap items-center justify-center leading-5 transition-colors disabled:pointer-events-none disabled:opacity-80 disabled:saturate-50',

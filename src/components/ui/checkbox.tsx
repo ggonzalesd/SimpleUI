@@ -11,21 +11,18 @@ interface Props extends Omit<SimpleUILibComponentProps, OmitedProps> {
   setState?: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-const SUICheckbox = React.forwardRef<HTMLInputElement, Props>(
-  ({ id, className, value, disabled, variant, size, state, setState }, ref) => {
+const Checkbox = React.forwardRef<HTMLInputElement, Props>(
+  ({ className, variant, size, state, setState, ...props }, ref) => {
     return (
       <input
         ref={ref}
-        id={id}
-        disabled={disabled}
-        value={value}
         type='checkbox'
         className={checkboxStyleGenerator({
           variant,
           size,
           className,
         })}
-        checked={state && state.includes(value)}
+        checked={state && state.includes(props.value)}
         onChange={
           setState &&
           ((e) => {
@@ -39,9 +36,10 @@ const SUICheckbox = React.forwardRef<HTMLInputElement, Props>(
             });
           })
         }
+        {...props}
       />
     );
   },
 );
 
-export default SUICheckbox;
+export default Checkbox;

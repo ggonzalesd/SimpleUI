@@ -7,20 +7,27 @@ interface Props extends Omit<SimpleUILibComponentProps, 'phase'> {
   direction?: SUIDirection;
 }
 
-const SUIDivider = React.forwardRef<HTMLDivElement, Props>(
+const Divider = React.forwardRef<HTMLDivElement, Props>(
   (
-    { id, className, children, variant, size, direction: phase = 'horizontal' },
+    {
+      className,
+      children,
+      variant,
+      size,
+      direction: phase = 'horizontal',
+      ...props
+    },
     ref,
   ) => {
     return (
       <div
         ref={ref}
-        id={id}
         className={dividerStyleGenerator({
           variant,
           className,
           phase,
         })}
+        {...props}
       >
         <div
           className={dividerStyleGenerator({
@@ -55,4 +62,4 @@ const SUIDivider = React.forwardRef<HTMLDivElement, Props>(
   },
 );
 
-export default SUIDivider;
+export default Divider;

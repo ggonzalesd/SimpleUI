@@ -7,8 +7,8 @@ interface Props extends Omit<SimpleUILibComponentProps, 'children' | 'phase'> {
   tabs: Record<string, { display: React.ReactNode; view: React.ReactNode }>;
 }
 
-const SUITab = React.forwardRef<HTMLElement, Props>(
-  ({ id, className, defaultTab, tabs, variant, size }, ref) => {
+const Tabs = React.forwardRef<HTMLElement, Props>(
+  ({ className, defaultTab, tabs, variant, size, ...props }, ref) => {
     const [currentTab, setTab] = useState<string | undefined>(
       defaultTab ?? Object.keys(tabs)[0],
     );
@@ -17,12 +17,12 @@ const SUITab = React.forwardRef<HTMLElement, Props>(
       <React.Fragment>
         <section
           ref={ref}
-          id={id}
           className={tabsStyleGenerator({
             variant,
             size,
             className,
           })}
+          {...props}
         >
           <div className='flex h-full w-2 items-end'>
             <div
@@ -88,4 +88,4 @@ const SUITab = React.forwardRef<HTMLElement, Props>(
   },
 );
 
-export default SUITab;
+export default Tabs;

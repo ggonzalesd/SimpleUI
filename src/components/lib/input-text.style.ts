@@ -2,8 +2,8 @@ import { SUILibGenerator } from './simple-ui.theme';
 
 export const inputTextStyleGenerator = SUILibGenerator({
   initial: {
-    sizes: 'medium',
     variant: 'normal',
+    size: 'medium',
   },
   default: 'rounded-md disabled:pointer-events-none disabled:saturate-50',
   variants: {

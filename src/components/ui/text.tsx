@@ -25,17 +25,14 @@ interface Props extends Omit<SimpleUILibComponentProps, 'phase'> {
     | 'label';
 }
 
-export default function SUIText({
-  id,
-  className,
-  type,
-  variant,
-  size,
-  children,
-}: Props) {
-  return React.createElement(type ?? 'p', {
-    id,
-    className: textStyleGenerator({ variant, size, className }),
-    children,
-  });
-}
+const Text = React.forwardRef<HTMLElement, Props>(
+  ({ className, type, variant, size, ...props }, ref) => {
+    return React.createElement(type ?? 'p', {
+      ref,
+      className: textStyleGenerator({ variant, size, className }),
+      ...props,
+    });
+  },
+);
+
+export default Text;
